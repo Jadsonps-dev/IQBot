@@ -99,14 +99,13 @@ class WebsocketClient(object):
                 del obj[k]
                 break
 
-    def on_message(self, message):  # pylint: disable=unused-argument
+    def on_message(self, wss, message):  # pylint: disable=unused-argument
         """Method to process websocket messages."""
         global_value.ssl_Mutual_exclusion = True
         logger = logging.getLogger(__name__)
         logger.debug(message)
 
         message = json.loads(str(message))
-
 
         technical_indicators(self.api, message, self.api_dict_clean)
         time_sync(self.api, message)
@@ -135,7 +134,7 @@ class WebsocketClient(object):
         strike_list(self.api, message)
         api_game_betinfo_result(self.api, message)
         traders_mood_changed(self.api, message)
-         # ------for forex&cfd&crypto..
+        # ------for forex&cfd&crypto..
         order_placed_temp(self.api, message)
         order(self.api, message)
         position(self.api, message)
