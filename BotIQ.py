@@ -3,8 +3,8 @@ import time
 import json
 
 ### preencha seu email e senha aqui abaixo ###
-email = ''
-senha = ''
+email = 'japatest0000@gmail.com'
+senha = 'Japatest.2003'
 
 API = IQ_Option(email, senha)
 
